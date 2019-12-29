@@ -28,17 +28,72 @@ html {
     margin: 0 auto 0 auto;
 }
 
+section {
+    padding: 80px 0 80px 0; /* Create white space between section and heading */
+}
+
+.box{
+    padding: 1%;
+}
 
 /* ----- HEADINGS ----- */
+h1, h2, h3{ /* Inheritance */
+    font-weight: 300; 
+    text-transform: uppercase;
+}
+
 h1{
     margin: 0;
     margin-bottom: 20px;
     color: #fff;
     font-size: 240%; /* Relative t othe 20px set in html */
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     word-spacing: 4px;
+    letter-spacing: 1px;
+}
+
+h2{ /* "Get Food Fast" */
+    font-size: 180%;
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+h3{ /* 4 columns */
+    font-size: 110%;
+    margin-bottom: 15px;
+}
+
+h2:after{ /* The after pseudo-element can be used to insert some content after the content of an element. */
+    display: block;
+    height: 2px;
+    background-color: #e67e22;
+    content: " ";
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/* ----- PARAGRAPHS ----- */
+.long-copy{
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.box p { /* Selecting certain elements within a class */
+    font-size: 90%;
+    line-height: 145%;
+}
+
+/* ----- ICONS ----- */
+.icon-big { /* We create our own modified class to manipulate since it is an imported icon */
+    font-size: 350%;
+    display: block;
+    color: #e67e22;
+    margin-bottom: 10px;
+    
 }
 
 
@@ -89,7 +144,7 @@ h1{
 /* -------------------------------------------------------------------------- */
 
 header{
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url(img/hero.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url(img/hero.jpg); /* Use linear gradient to darken background because we cant use background image  */
     background-size: cover; /* Use whole image to cover */
     background-position: center; 
     height: 100vh; /* Use all of the display */
@@ -135,4 +190,51 @@ header{
 .main-nav li a:hover,
 .main-nav li a:active{
     border-bottom: 2px solid #e67e22;
+}
+
+/* -------------------------------------------------------------------------- */
+/* FEATURES */
+/* -------------------------------------------------------------------------- */
+
+.section-features .long-copy{
+   margin-bottom: 30px; 
+}
+
+/* -------------------------------------------------------------------------- */
+/* MEALS */
+/* -------------------------------------------------------------------------- */
+
+.section-meals:{
+    padding: 0;
+}
+
+.meals-showcase{
+    list-style: none;
+    width: 100;
+}
+
+.meals-showcase li{
+    display: block; /* Doesn't matter if they're block elements here because we restrict width to 25% so we just float 4 on one 100% width line */
+    float: left;
+    width: 25%;
+}
+
+.meal-figures{
+    width: 100%; /* This selection has the exact same width as its parent.  We have to overwrite because of the normalize.css file which changes the border box a little bit */
+    margin: 0;
+    overflow: hidden; /* When we scale 115% we go outside of containers so we must contain them using this feature overflow */
+    background-color:#000 /* Set background to black so we can apply dim filter using opacity */
+}
+
+.meal-figures img {
+    opacity: 0.7; /* Make opacity lower so we can dim the background */
+    width: 100%; /* Width is set to exact size of container.  We have to overwrite because of the normalize.css file which changes the border box a little bit */
+    height: auto;
+    transform: scale(1.15);
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.meal-figures img:hover{
+    opacity: 1;
+    transform: scale(1.03); /* We use 103% because there is a whiteline bug which separates each list item so this covers it */
 }
